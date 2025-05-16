@@ -2,15 +2,15 @@ plugins {
     id 'application'
     id 'distribution'
     id 'jacoco'
-    id 'org.openjfx.javafxplugin' version '0.0.8'
+    id 'org.openjfx.javafxplugin' version '0.1.0'
     id 'io.freefair.lombok' version '6.4.3'
     id 'com.github.hierynomus.license-report' version '0.16.1'
     id 'com.github.spotbugs' version '5.0.7'
     id 'net.researchgate.release' version '2.6.0'
     id "de.undercouch.download" version '4.0.4'
 
-    id 'org.springframework.boot' version '2.7.0'
-    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'org.springframework.boot' version '3.4.5'
+    id 'io.spring.dependency-management' version '1.1.4'
 }
 
 spotbugsMain.enabled = true
@@ -18,7 +18,7 @@ spotbugsTest.enabled = false
 
 logging.captureStandardOutput LogLevel.INFO
 
-ext.javafxVersion = "17.0.2"
+ext.javafxVersion = "21.0.1"
 
 apply from: "${rootDir}/gradle/package.gradle"
 apply from: "${rootDir}/gradle/installer.gradle"
@@ -82,7 +82,6 @@ subprojects {
 
     spotbugs {
         toolVersion = '4.7.0'
-
         //ignoreFailures = false
         //effort = "max"
         //reportLevel = "high"
@@ -109,14 +108,6 @@ subprojects {
     sourceCompatibility = '17'
     targetCompatibility = '17'
 
-    publishing {
-        publications {
-            maven(MavenPublication) {
-                from(components.java)
-            }
-        }
-    }
-
     tasks.withType(JavaCompile) {
         options.encoding = 'UTF-8'
     }
@@ -137,18 +128,6 @@ subprojects {
     }
 
     tasks.jacocoTestReport.dependsOn('test')
-
-    pmd {
-        ignoreFailures = true
-        rulesMinimumPriority = 2
-        sourceSets = [sourceSets.main, sourceSets.test]
-        reportsDir = file("$project.buildDir/reports/pmd")
-        ruleSets = []
-        ruleSetFiles = files(rootProject.file("pmd-ruleset.xml"))
-    }
-
-    pmdMain.enabled = true
-    pmdTest.enabled = true
 }
 
 dependencies {
@@ -333,7 +312,18 @@ windowsAfsrDistZip.dependsOn(downloadAndExtractWindowsJRE)
 windowsAfsrx32DistZip.dependsOn(downloadAndExtractWindowsJREx32)
 linuxDistTar.dependsOn(downloadAndExtractLinuxDependecies)
 macosDistTar.dependsOn(downloadAndExtractMacosJRE)
-armDistTar.dependsOn(downloadAndExtractARMDependecies)
+
+tasks.named('armDistTar') {
+    dependsOn tasks.named('downloadAndExtractARMDependecies')
+    dependsOn tasks.named('downloadLicenses')
+    dependsOn tasks.named('scriptsForRelease')
+}
+
+tasks.named('noJREDistTar') {
+    dependsOn tasks.named('downloadAndExtractARMDependecies')
+    dependsOn tasks.named('downloadLicenses')
+    dependsOn tasks.named('scriptsForRelease')
+}
 
 tasks.withType(Tar){
     compression = Compression.GZIP
@@ -342,27 +332,8 @@ tasks.withType(Tar){
 
 distZip {
     duplicatesStrategy = 'exclude'
-    //enabled = false
 }
 [bootJar, bootDistTar, bootDistZip]*.enabled = false
-
-/*
-bootDistTar{
-    enabled = false
-}
-
-distTar{
-    enabled = false
-}
-
-jar {
-    enabled = false
-}
-
-bootJar {
-    classifier = 'application'
-}
-*/
 
 release {
     failOnPublishNeeded = false
@@ -377,6 +348,4 @@ startScripts.enabled = false
 afterReleaseBuild.dependsOn generateWindowsInstallerInDocker
 afterReleaseBuild.dependsOn generateWindowsInstallerInDockerx32
 afterReleaseBuild.dependsOn generateWindowsAfsrInstallerInDocker
-//afterReleaseBuild.dependsOn generateWindowsAfsrInstallerInDockerx32
 afterReleaseBuild.dependsOn generateWindowsBeraInstallerInDocker
-//afterReleaseBuild.dependsOn generateWindowsBeraInstallerInDockerx32
