@@ -19,10 +19,15 @@ jobs:
       - name: Make Gradle Wrapper executable
         run: chmod +x ./gradlew
 
+      - name: Show current dir and list
+        run: |
+          pwd
+          ls -R
+
       - name: Run SpotBugs
         run: |
           ./gradlew clean
-          ./gradlew spotbugsMain --debug --stacktrace -Dspotbugs.jvmargs="-Xmx1024m"
+          ./gradlew spotbugsMain -Dspotbugs.jvmargs="-Xmx1024m"
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
