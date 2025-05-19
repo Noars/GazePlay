@@ -1,5 +1,0 @@
-<FindBugsFilter>
-    <Match>
-        <Class name="module-info"/>
-    </Match>
-</FindBugsFilter>

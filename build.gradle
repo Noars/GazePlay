@@ -23,14 +23,10 @@ spotbugsMain.enabled = true
 spotbugsTest.enabled = false
 
 tasks.withType(com.github.spotbugs.snom.SpotBugsTask).configureEach {
-
     reports {
         xml.required.set(false)
         html.required.set(true)
     }
-    jvmArgs = ['-Xmx1g']
-    ignoreFailures = false
-    excludeFilter.set(file("excludeFilter.xml"))
 }
 
 logging.captureStandardOutput LogLevel.INFO
