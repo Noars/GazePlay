@@ -23,7 +23,9 @@ spotbugsMain.enabled = true
 spotbugsTest.enabled = false
 
 tasks.withType(com.github.spotbugs.snom.SpotBugsTask).configureEach {
+
     jvmArgs = ['-Xmx1g']
+    excludeFilter.set(file("spotbugs-exclude.xml"))
 
     reports {
         xml.required.set(false)
