@@ -1,29 +1,30 @@
 name: Continuous Integration
 
-# Trigger the workflow on push or pull request
 on: [push, pull_request]
 
 jobs:
-
   build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
-      - name: Set up JDK 17
-        uses: actions/setup-java@v1
+      - name: Set up JDK 17 (Azul Zulu)
+        uses: actions/setup-java@v3
         with:
-          java-version: 17
+          distribution: 'zulu'
+          java-version: '17'
 
-      - name: Run Tests with Gradle
-        run: |
-          chmod +x ./gradlew
-          ./gradlew --stacktrace --info spotbugsMain
+      - name: Make Gradle Wrapper executable
+        run: chmod +x ./gradlew
 
-      - name: Upload Artifacts
-        uses: actions/upload-artifact@v2
+      - name: Run SpotBugs analysis
+        run: ./gradlew --stacktrace --info spotbugsMain
+
+      - name: Upload SpotBugs Reports
+        uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: 'Spotbugs Reports'
-          path: ./**/build/spotbugs/
+          name: Spotbugs Reports
+          path: '**/build/spotbugs/'
