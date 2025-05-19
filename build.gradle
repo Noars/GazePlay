@@ -5,7 +5,7 @@ plugins {
     id 'org.openjfx.javafxplugin' version '0.1.0'
     id 'io.freefair.lombok' version '6.4.3'
     id 'com.github.hierynomus.license-report' version '0.16.1'
-    id 'com.github.spotbugs' version '5.0.7'
+    id 'com.github.spotbugs' version '6.1.11'
     id 'net.researchgate.release' version '2.6.0'
     id "de.undercouch.download" version '4.0.4'
 
@@ -87,10 +87,7 @@ subprojects {
     }
 
     spotbugs {
-        toolVersion = '4.7.0'
-        //ignoreFailures = false
-        //effort = "max"
-        //reportLevel = "high"
+        toolVersion = '4.9.3'
         excludeFilter = file("spotbugs-exclude.xml")
     }
 
