@@ -19,12 +19,12 @@ jobs:
       - name: Make Gradle Wrapper executable
         run: chmod +x ./gradlew
 
-      - name: Run SpotBugs with more memory (continue on failure)
+      - name: Run SpotBugs
         run: |
           ./gradlew clean
           ./gradlew --stacktrace --info spotbugsMain -Dspotbugs.jvmargs="-Xmx1024m"
 
-      - name: Upload SpotBugs Reports
+      - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         if: always()
         with:
