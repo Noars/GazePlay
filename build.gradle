@@ -22,6 +22,16 @@ dependencies {
 spotbugsMain.enabled = true
 spotbugsTest.enabled = false
 
+tasks.withType(com.github.spotbugs.snom.SpotBugsTask).configureEach {
+    jvmArgs = ['-Xmx1g']
+
+    reports {
+        xml.required.set(false)
+        html.required.set(true)
+        html.outputLocation.set(file("$buildDir/reports/spotbugs/${name}.html"))
+    }
+}
+
 logging.captureStandardOutput LogLevel.INFO
 
 ext.javafxVersion = "21.0.1"
@@ -88,6 +98,9 @@ subprojects {
 
     spotbugs {
         toolVersion = '4.9.3'
+        ignoreFailures = false
+        effort = "max"
+        reportLevel = "low"
         excludeFilter = file("spotbugs-exclude.xml")
     }
 
