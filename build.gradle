@@ -13,6 +13,12 @@ plugins {
     id 'io.spring.dependency-management' version '1.1.4'
 }
 
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'info.picocli:picocli-spring-boot-starter:4.7.5'
+    annotationProcessor 'info.picocli:picocli-codegen:4.7.5'
+}
+
 spotbugsMain.enabled = true
 spotbugsTest.enabled = false
 
@@ -320,7 +326,51 @@ tasks.named('armDistTar') {
 }
 
 tasks.named('noJREDistTar') {
-    dependsOn tasks.named('downloadAndExtractARMDependecies')
+    dependsOn tasks.named('downloadLicenses')
+    dependsOn tasks.named('scriptsForRelease')
+}
+
+tasks.named('noJREDistZip') {
+    dependsOn tasks.named('downloadLicenses')
+    dependsOn tasks.named('scriptsForRelease')
+}
+
+tasks.named('linuxDistTar') {
+    dependsOn tasks.named('downloadLicenses')
+    dependsOn tasks.named('scriptsForRelease')
+}
+
+tasks.named('macosDistTar') {
+    dependsOn tasks.named('downloadLicenses')
+    dependsOn tasks.named('scriptsForRelease')
+}
+
+tasks.named('windowsAfsrDistZip') {
+    dependsOn tasks.named('downloadLicenses')
+    dependsOn tasks.named('scriptsForRelease')
+}
+
+tasks.named('windowsAfsrx32DistZip') {
+    dependsOn tasks.named('downloadLicenses')
+    dependsOn tasks.named('scriptsForRelease')
+}
+
+tasks.named('windowsBeraDistZip') {
+    dependsOn tasks.named('downloadLicenses')
+    dependsOn tasks.named('scriptsForRelease')
+}
+
+tasks.named('windowsBerax32DistZip') {
+    dependsOn tasks.named('downloadLicenses')
+    dependsOn tasks.named('scriptsForRelease')
+}
+
+tasks.named('windowsDistZip') {
+    dependsOn tasks.named('downloadLicenses')
+    dependsOn tasks.named('scriptsForRelease')
+}
+
+tasks.named('windowsx32DistZip') {
     dependsOn tasks.named('downloadLicenses')
     dependsOn tasks.named('scriptsForRelease')
 }
