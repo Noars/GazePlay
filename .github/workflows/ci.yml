@@ -16,20 +16,14 @@ jobs:
           distribution: 'zulu'
           java-version: '17'
 
-      - name: Make Gradle Wrapper executable
-        run: chmod +x ./gradlew
-
       - name: Run SpotBugs
         run: |
-          echo "Running SpotBugs analysis..."
-          ./gradlew spotbugsMain --info --stacktrace -Dspotbugs.jvmargs="-Xmx1024m" || { 
-            echo "::warning ::SpotBugs a détecté des erreurs. Vérifiez les rapports."; 
-            exit 0; 
-          }
+          chmod +x ./gradlew
+          ./gradlew --stacktrace --info spotbugsMain
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         if: always()
         with:
           name: Spotbugs Reports
-          path: '**/build/reports/spotbugs/'
+          path: '**/build/spotbugs/'
