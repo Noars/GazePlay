@@ -319,7 +319,7 @@ public class Stats implements GazeMotionListener {
         );
 
         try {
-            final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd 'at' HH.mm.ss");
+            final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd 'at' HH-mm-ss");
             nameOfVideo = this.movieFolder + "/ScreenRecording " + dateFormat.format(new Date());
             this.screenRecorder = new ScreenRecorder(cfg, areaRect, fileFormat, screenFormat, null, null, this.movieFolder);
             this.screenRecorder.start();

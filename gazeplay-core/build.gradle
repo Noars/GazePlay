@@ -4,9 +4,9 @@ dependencies {
     implementation 'com.github.agomezmoron:screen-recorder:0.0.3'
     implementation project(':gazeplay-commons')
     implementation project(':gazeplay-games-commons')
-    implementation 'com.google.code.gson:gson:2.9.0'
+    implementation 'com.google.code.gson:gson:2.10.1'
     implementation 'org.rxtx:rxtx:2.1.7'
-    implementation 'com.theeyetribe:eyetribe-java:0.9.77'
+    implementation files("${rootDir}/lib/EyeTribeJavaFx.jar")
     implementation 'ch.qos.logback:logback-classic:1.2.11'
     implementation 'ch.qos.logback:logback-core:1.2.11'
     implementation 'org.slf4j:slf4j-api:1.7.36'
@@ -50,13 +50,23 @@ jar {
 
 tasks.jar.dependsOn('createLicence')
 
-task createLicence(dependsOn: ['processResources'], type: Copy, group: 'license') {
+def generatedLicenceDir = "$buildDir/generated/resources/licence"
+
+task createLicence(type: Copy, group: 'license') {
     from("${rootDir}/gradle/templates/licence.txt")
     expand([
             "version": version,
             "date"   : new Date().format('yyyy-MM-dd')
     ])
-    into("${processResources.destinationDir}/data/common")
+    into("$generatedLicenceDir/data/common")
+}
+
+// Ajouter ce dossier dans les ressources du projet
+sourceSets.main.resources.srcDir generatedLicenceDir
+
+// Assure que processResources attend bien la licence
+tasks.named('processResources') {
+    dependsOn createLicence
 }
 
 def generatedResources = "${buildDir}/generated-resources/main"

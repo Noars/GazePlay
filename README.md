@@ -7,3 +7,8 @@ See [here](Games-eng.md) for a list of games included in the software.
 You can build the project from source code by cloning this repository and following the [BUILD](BUILD.MD) instructions.
 ## Contribute
 Please refer to the [Contribution Guidelines](CONTRIBUTING.MD).
+## Update
+Last updated on 02/20/2025
+JRE -> Java 17 (Azul Zulu), supported until 2029
+JavaFx -> 21, supported until (at least) 2028
+Gradle -> 8

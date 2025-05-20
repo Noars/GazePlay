@@ -1,11 +1,10 @@
 <FindBugsFilter>
     <Match>
-        <Package name="~.*"/>
-        <Bug pattern="EI_EXPOSE_REP, EI_EXPOSE_REP2, THROWS_METHOD_THROWS_RUNTIMEEXCEPTION, THROWS_METHOD_THROWS_CLAUSE_BASIC_EXCEPTION, DCN_NULLPOINTER_EXCEPTION"/>
+        <Source name="~.*" />
+        <Bug code="CT,US"/>
     </Match>
-    <!-- https://github.com/spotbugs/spotbugs/issues/756 -->
     <Match>
         <Package name="~.*"/>
-        <Bug pattern="RCN_REDUNDANT_NULLCHECK_WOULD_HAVE_BEEN_A_NPE"/>
+        <Bug pattern="EI_EXPOSE_REP,EI_EXPOSE_REP2,THROWS_METHOD_THROWS_RUNTIMEEXCEPTION,THROWS_METHOD_THROWS_CLAUSE_BASIC_EXCEPTION,DCN_NULLPOINTER_EXCEPTION,RCN_REDUNDANT_NULLCHECK_WOULD_HAVE_BEEN_A_NPE"/>
     </Match>
 </FindBugsFilter>
