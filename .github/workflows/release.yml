@@ -2,8 +2,10 @@ name: Release GazePlay
 
 on:
   push:
-    branches:
-      - developMain
+    branches: ['**']
+  pull_request:
+    branches: ['**']
+    
 jobs:
   release:
     runs-on: ubuntu-latest
