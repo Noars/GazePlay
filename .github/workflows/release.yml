@@ -1,6 +1,6 @@
-on: [push]
-
 name: Release GazePlay
+
+on: [push, pull_request]
 
 jobs:
   release:
