@@ -1,7 +1,9 @@
 name: Release GazePlay
 
-on: [push, pull_request]
-
+on:
+  push:
+    branches:
+      - developMain
 jobs:
   release:
     runs-on: ubuntu-latest
