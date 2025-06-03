@@ -379,6 +379,12 @@ tasks.named('windowsAfsrx32DistZip') {
     dependsOn tasks.named('scriptsForRelease')
 }
 
+tasks.named('windowsAfsrx32DistTar') {
+    dependsOn tasks.named('downloadLicenses')
+    dependsOn tasks.named('scriptsForRelease')
+    dependsOn tasks.named('extractWindowsJREx32')
+}
+
 tasks.named('windowsBeraDistZip') {
     dependsOn tasks.named('downloadLicenses')
     dependsOn tasks.named('scriptsForRelease')
