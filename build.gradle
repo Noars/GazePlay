@@ -339,6 +339,12 @@ tasks.named('noJREDistZip') {
     dependsOn tasks.named('scriptsForRelease')
 }
 
+tasks.named('linuxDistZip') {
+    dependsOn tasks.named('downloadLicenses')
+    dependsOn tasks.named('scriptsForRelease')
+    dependsOn tasks.named('extractOpenJFXForLibavPlugin')
+}
+
 tasks.named('linuxDistTar') {
     dependsOn tasks.named('downloadLicenses')
     dependsOn tasks.named('scriptsForRelease')
