@@ -343,6 +343,8 @@ tasks.named('linuxDistZip') {
     dependsOn tasks.named('downloadLicenses')
     dependsOn tasks.named('scriptsForRelease')
     dependsOn tasks.named('extractOpenJFXForLibavPlugin')
+    dependsOn tasks.named('extractLinuxJRE')
+    dependsOn tasks.named('extractTobiiDriversForLinux')
 }
 
 tasks.named('linuxDistTar') {
