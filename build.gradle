@@ -320,6 +320,10 @@ tasks.named('resolveMainClassName') {
     dependsOn tasks.named('unzipAfsrDistribution')
 }
 
+tasks.named('distTar') {
+    dependsOn tasks.named('unzipAfsrDistribution')
+}
+
 tasks.named('armDistZip') {
     dependsOn tasks.named('downloadLicenses')
     dependsOn tasks.named('scriptsForRelease')
