@@ -316,6 +316,10 @@ windowsAfsrx32DistZip.dependsOn(downloadAndExtractWindowsJREx32)
 linuxDistTar.dependsOn(downloadAndExtractLinuxDependecies)
 macosDistTar.dependsOn(downloadAndExtractMacosJRE)
 
+tasks.named('resolveMainClassName') {
+    dependsOn tasks.named('unzipAfsrDistribution')
+}
+
 tasks.named('armDistZip') {
     dependsOn tasks.named('downloadLicenses')
     dependsOn tasks.named('scriptsForRelease')
