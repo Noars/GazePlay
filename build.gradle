@@ -342,6 +342,7 @@ tasks.named('armDistZip') {
     dependsOn tasks.named('extractARMJRE')
     dependsOn tasks.named('unzipAfsrDistribution')
     dependsOn tasks.named('unzipBeraDistribution')
+    dependsOn tasks.named('unzipDistribution')
 }
 
 tasks.named('armDistTar') {
@@ -368,6 +369,7 @@ tasks.named('linuxDistZip') {
     dependsOn tasks.named('extractTobiiDriversForLinux')
     dependsOn tasks.named('unzipAfsrDistribution')
     dependsOn tasks.named('unzipBeraDistribution')
+    dependsOn tasks.named('unzipDistribution')
 }
 
 tasks.named('linuxDistTar') {
@@ -381,6 +383,7 @@ tasks.named('macosDistZip') {
     dependsOn tasks.named('extractMacosJRE')
     dependsOn tasks.named('unzipAfsrDistribution')
     dependsOn tasks.named('unzipBeraDistribution')
+    dependsOn tasks.named('unzipDistribution')
 }
 
 tasks.named('macosDistTar') {
@@ -399,6 +402,7 @@ tasks.named('windowsAfsrDistTar') {
     dependsOn tasks.named('extractWindowsJRE')
     dependsOn tasks.named('unzipAfsrDistribution')
     dependsOn tasks.named('unzipBeraDistribution')
+    dependsOn tasks.named('unzipDistribution')
 }
 
 tasks.named('windowsAfsrx32DistZip') {
@@ -412,6 +416,7 @@ tasks.named('windowsAfsrx32DistTar') {
     dependsOn tasks.named('extractWindowsJREx32')
     dependsOn tasks.named('unzipAfsrDistribution')
     dependsOn tasks.named('unzipBeraDistribution')
+    dependsOn tasks.named('unzipDistribution')
 }
 
 tasks.named('windowsBeraDistZip') {
