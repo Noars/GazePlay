@@ -424,6 +424,7 @@ tasks.named('windowsBeraDistTar') {
     dependsOn tasks.named('scriptsForRelease')
     dependsOn tasks.named('extractWindowsJRE')
     dependsOn tasks.named('unzipAfsrDistribution')
+    dependsOn tasks.named('unzipBeraDistribution')
 }
 
 tasks.named('windowsBerax32DistZip') {
