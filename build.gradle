@@ -321,6 +321,7 @@ tasks.named('armDistZip') {
     dependsOn tasks.named('scriptsForRelease')
     dependsOn tasks.named('extractOpenJFXForLibavPluginARM')
     dependsOn tasks.named('extractARMJRE')
+    dependsOn tasks.named('unzipAfsrDistribution')
 }
 
 tasks.named('armDistTar') {
@@ -345,6 +346,7 @@ tasks.named('linuxDistZip') {
     dependsOn tasks.named('extractOpenJFXForLibavPlugin')
     dependsOn tasks.named('extractLinuxJRE')
     dependsOn tasks.named('extractTobiiDriversForLinux')
+    dependsOn tasks.named('unzipAfsrDistribution')
 }
 
 tasks.named('linuxDistTar') {
@@ -356,6 +358,7 @@ tasks.named('macosDistZip') {
     dependsOn tasks.named('downloadLicenses')
     dependsOn tasks.named('scriptsForRelease')
     dependsOn tasks.named('extractMacosJRE')
+    dependsOn tasks.named('unzipAfsrDistribution')
 }
 
 tasks.named('macosDistTar') {
@@ -372,6 +375,7 @@ tasks.named('windowsAfsrDistTar') {
     dependsOn tasks.named('downloadLicenses')
     dependsOn tasks.named('scriptsForRelease')
     dependsOn tasks.named('extractWindowsJRE')
+    dependsOn tasks.named('unzipAfsrDistribution')
 }
 
 tasks.named('windowsAfsrx32DistZip') {
