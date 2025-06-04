@@ -348,6 +348,7 @@ tasks.named('armDistZip') {
     dependsOn tasks.named('unzipAfsrDistribution')
     dependsOn tasks.named('unzipBeraDistribution')
     dependsOn tasks.named('unzipDistribution')
+    dependsOn tasks.named('unzipDistributionx32')
 }
 
 tasks.named('armDistTar') {
@@ -375,6 +376,7 @@ tasks.named('linuxDistZip') {
     dependsOn tasks.named('unzipAfsrDistribution')
     dependsOn tasks.named('unzipBeraDistribution')
     dependsOn tasks.named('unzipDistribution')
+    dependsOn tasks.named('unzipDistributionx32')
 }
 
 tasks.named('linuxDistTar') {
@@ -389,6 +391,7 @@ tasks.named('macosDistZip') {
     dependsOn tasks.named('unzipAfsrDistribution')
     dependsOn tasks.named('unzipBeraDistribution')
     dependsOn tasks.named('unzipDistribution')
+    dependsOn tasks.named('unzipDistributionx32')
 }
 
 tasks.named('macosDistTar') {
@@ -408,6 +411,7 @@ tasks.named('windowsAfsrDistTar') {
     dependsOn tasks.named('unzipAfsrDistribution')
     dependsOn tasks.named('unzipBeraDistribution')
     dependsOn tasks.named('unzipDistribution')
+    dependsOn tasks.named('unzipDistributionx32')
 }
 
 tasks.named('windowsAfsrx32DistZip') {
@@ -422,6 +426,7 @@ tasks.named('windowsAfsrx32DistTar') {
     dependsOn tasks.named('unzipAfsrDistribution')
     dependsOn tasks.named('unzipBeraDistribution')
     dependsOn tasks.named('unzipDistribution')
+    dependsOn tasks.named('unzipDistributionx32')
 }
 
 tasks.named('windowsBeraDistZip') {
