@@ -446,6 +446,7 @@ tasks.named('windowsDistTar') {
     dependsOn tasks.named('downloadLicenses')
     dependsOn tasks.named('scriptsForRelease')
     dependsOn tasks.named('extractWindowsJRE')
+    dependsOn tasks.named('unzipAfsrDistribution')
 }
 
 tasks.withType(Tar){
