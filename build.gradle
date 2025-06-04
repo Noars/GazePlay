@@ -324,6 +324,10 @@ tasks.named('distTar') {
     dependsOn tasks.named('unzipAfsrDistribution')
 }
 
+tasks.named('distZip') {
+    dependsOn tasks.named('unzipAfsrDistribution')
+}
+
 tasks.named('armDistZip') {
     dependsOn tasks.named('downloadLicenses')
     dependsOn tasks.named('scriptsForRelease')
