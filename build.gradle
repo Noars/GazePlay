@@ -327,6 +327,7 @@ tasks.named('unzipBeraDistribution') {
 
 tasks.named('distTar') {
     dependsOn tasks.named('unzipAfsrDistribution')
+    dependsOn tasks.named('unzipBeraDistribution')
 }
 
 tasks.named('distZip') {
