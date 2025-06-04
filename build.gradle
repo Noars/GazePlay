@@ -324,11 +324,18 @@ tasks.named('resolveMainClassName') {
 tasks.named('unzipBeraDistribution') {
     dependsOn tasks.named('unzipAfsrDistribution')
     dependsOn tasks.named('unzipDistribution')
+    dependsOn tasks.named('unzipDistributionx32')
 }
 
 tasks.named('unzipAfsrDistribution') {
     dependsOn tasks.named('unzipDistribution')
+    dependsOn tasks.named('unzipDistributionx32')
 }
+
+tasks.named('unzipDistributionx32') {
+    dependsOn tasks.named('unzipDistribution')
+}
+
 
 tasks.named('distTar') {
     dependsOn tasks.named('unzipAfsrDistribution')
