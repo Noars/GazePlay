@@ -407,14 +407,20 @@ tasks.named('windowsBerax32DistTar') {
     dependsOn tasks.named('extractWindowsJREx32')
 }
 
+tasks.named('windowsx32DistZip') {
+    dependsOn tasks.named('downloadLicenses')
+    dependsOn tasks.named('scriptsForRelease')
+}
+
 tasks.named('windowsDistZip') {
     dependsOn tasks.named('downloadLicenses')
     dependsOn tasks.named('scriptsForRelease')
 }
 
-tasks.named('windowsx32DistZip') {
+tasks.named('windowsDistTar') {
     dependsOn tasks.named('downloadLicenses')
     dependsOn tasks.named('scriptsForRelease')
+    dependsOn tasks.named('extractWindowsJRE')
 }
 
 tasks.withType(Tar){
