@@ -450,6 +450,7 @@ tasks.named('windowsx32DistTar') {
     dependsOn tasks.named('scriptsForRelease')
     dependsOn tasks.named('extractWindowsJREx32')
     dependsOn tasks.named('unzipAfsrDistribution')
+    dependsOn tasks.named('unzipBeraDistribution')
 }
 
 tasks.named('windowsDistZip') {
