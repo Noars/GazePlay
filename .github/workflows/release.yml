@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       bump:
-        description: 'Version à incrémenter'
+        description: 'Choose version type'
         required: true
         default: 'patch'
         type: choice
@@ -19,8 +19,8 @@ jobs:
     
     steps:
 
-      - name: Afficher le type d'incrément choisi
-        run: echo "Type d'incrément sélectionné -> ${{ github.event.inputs.bump }}"
+      - name: Show version type selected
+        run: echo "Version selected is -> ${{ github.event.inputs.bump }}"
 
       - name: Free Disk Space (Ubuntu)
         uses: jlumbroso/free-disk-space@main
@@ -95,7 +95,7 @@ jobs:
           version="${latest_tag#v}"  # strip leading 'v'
           IFS='.' read -r major minor patch <<< "$version"
 
-          case "$bump" in
+          case "${{ github.event.inputs.bump }}" in
             major)
               major=$((major + 1))
               minor=0
