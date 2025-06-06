@@ -19,6 +19,9 @@ jobs:
     
     steps:
 
+      - name: Afficher le type d'incrément choisi
+        run: echo "Type d'incrément sélectionné -> ${{ github.event.inputs.bump }}"
+
       - name: Free Disk Space (Ubuntu)
         uses: jlumbroso/free-disk-space@main
         with:
